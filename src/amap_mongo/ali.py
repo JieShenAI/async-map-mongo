@@ -7,7 +7,7 @@ import logging
 from .argument import MongoArguments, AsyncMapCallArguments, ExcelFileArguments
 from .mongo_db import MapMongoDB
 from .sync import AsyncMapCall
-from .data import ExcelObj
+from .data import ExcelObj, remove_parentheses_from_address
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -59,9 +59,12 @@ def export2excel():
         df = pd.read_csv(data_args.filename, low_memory=False)
     else:
         raise ValueError(f"{data_args.filename} is not a .csv 、.xlsx or .xls file")
-
+    # 在导出的时候，由于要读取整个文件，为避免重复加载excel，就不从 ExcelObj 中读取 address
+    addresses = df[data_args.address_col_name].tolist()
+    if data_args.address_clean:
+        addresses = [remove_parentheses_from_address(address) for address in addresses]
     lon_lat_data = []
-    for address in df[data_args.address_col_name]:
+    for address in addresses:
         longs, lats = pd.NA, pd.NA
         if len(address) > mongo_args.address_min_length:
             d = mongo_db.query_by_address(address)
@@ -70,7 +73,6 @@ def export2excel():
                 if len(geocodes) > 0:
                     location = geocodes[0]["location"]
                     longs, lats = location.split(",")
-
         lon_lat_data.append((longs, lats))
 
     df["longitude"] = [item[0] for item in lon_lat_data]
