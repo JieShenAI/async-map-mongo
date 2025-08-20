@@ -12,6 +12,12 @@ This package enables asynchronous calls to geocoding APIs (default: Amap API; ex
 Amap API call interface:
 https://restapi.amap.com/v3/geocode/geo?address=北京市朝阳区阜通东大街6号&output=XML&key=<user's key>
 
+## install
+
+```
+pip install async-map-mongo
+```
+
 ## Usage
 
 The Amap API key can be stored in a .env file:

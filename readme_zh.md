@@ -8,6 +8,12 @@ async 异步调用高德地图的API获取对应的经纬度地址，API调用�
 高德地图调用接口：
 https://restapi.amap.com/v3/geocode/geo?address=北京市朝阳区阜通东大街6号&output=XML&key=<用户的key>
 
+## install
+
+```
+pip install async-map-mongo
+```
+
 ## 用法
 
 高德地图的key可保存在.env文件中：
