@@ -26,13 +26,13 @@ amap_insert \
 --collection_name amap \
 --limiter_ratio 2.8 \
 --address_min_length 5 \
---filename data/xxx.xlsx \
---address_col_name 注册地址 \
+--filename data/excel_name.xlsx \
+--address_col_name address \
 --address_clean true \
 --max_addresses_num 1000 \
 ```
 
-Collects all addresses from the "注册地址" (Registration Address) column, filters out addresses that do not exist in the database, and then calls Amap for the remaining addresses to obtain latitude and longitude.
+Collects all addresses from the "address" column, filters out addresses that do not exist in the database, and then calls Amap for the remaining addresses to obtain latitude and longitude.
 - filename: Excel or CSV file;
 - address_col_name: the attribute name corresponding to the address;
 - limiter_ratio: API call rate limit per second;
@@ -48,8 +48,8 @@ amap_export \
 --db_name map \
 --collection_name amap \
 --address_min_length 5 \
---filename data/jiekai_industry.xlsx \
---address_col_name 注册地址 \
+--filename data/excel_name.xlsx \
+--address_col_name address \
 --address_clean true \
 --output_type csv \
 --output_dir output

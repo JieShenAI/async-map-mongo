@@ -23,13 +23,13 @@ amap_insert \
 --collection_name amap \
 --limiter_ratio 2.8 \
 --address_min_length 5 \
---filename data/xxx.xlsx \
---address_col_name 注册地址 \
+--filename data/excel_name.xlsx \
+--address_col_name address \
 --address_clean true \
 --max_addresses_num 1000 \
 ```
 
-收集 注册地址 这个属性列所有的地址，然后筛选出在数据库中不存在的地址，再针对剩下的地址调用高德地图获取经纬度
+收集 address 这个属性列所有的地址，然后筛选出在数据库中不存在的地址，再针对剩下的地址调用高德地图获取经纬度
 - filename: excel或者csv文件;
 - address_col_name: 地址对应的属性名；
 - limiter_ratio: 每秒的API调用速度限制；
@@ -45,8 +45,8 @@ amap_export \
 --db_name map \
 --collection_name amap \
 --address_min_length 5 \
---filename data/jiekai_industry.xlsx \
---address_col_name 注册地址 \
+--filename data/excel_name.xlsx \
+--address_col_name address \
 --address_clean true \
 --output_type csv \
 --output_dir output
