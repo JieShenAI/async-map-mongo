@@ -73,8 +73,10 @@ def export2excel():
 
         lon_lat_data.append((longs, lats))
 
-    df["经度"] = [item[0] for item in lon_lat_data]
-    df["维度"] = [item[1] for item in lon_lat_data]
+    df["longitude"] = [item[0] for item in lon_lat_data]
+    df["latitude"] = [item[1] for item in lon_lat_data]
     os.makedirs(data_args.output_dir, exist_ok=True)
     if data_args.output_type == "csv":
+        df.to_csv(excel_obj.output_filename, index=False)
+    elif data_args.output_type in ["xlsx", "xls"]:
         df.to_excel(excel_obj.output_filename, index=False)

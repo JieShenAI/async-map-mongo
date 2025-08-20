@@ -53,7 +53,7 @@ amap_export \
 ```
 
 - address_clean：是否删除地址中文括号包裹的文本，true表示删除，false表示不删除;
-- output_type: 导出的格式默认为csv;
+- output_type: 导出的文件格式，默认为csv，仅支持 csv和xlsx文件后缀；
 
 ## API调用扩展性
 虽然默认支持的是高德地图API经纬度调用，百度地图可考虑通过更换base_url参数实现调用。

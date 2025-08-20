@@ -3,6 +3,7 @@
 # async-map-mongo
 Asynchronously calls Amap's API to obtain corresponding latitude and longitude coordinates, with API call results stored in a MongoDB database. Provides functionality to query latitude and longitude from MongoDB and export to Excel.
 
+Open Source Code Address: [https://github.com/JieShenAI/async-map-mongo](https://github.com/JieShenAI/async-map-mongo)
 
 ## Introduction
 
@@ -56,7 +57,7 @@ amap_export \
 ```
 
 - address_clean: whether to remove text enclosed in Chinese parentheses in the address; true means remove, false means do not remove;
-- output_type: the default export format is csv;
+- output_type: The format of the exported file, which defaults to csv. Only file extensions of csv and xlsx are supported.
 
 ## API Call Extensibility
 
