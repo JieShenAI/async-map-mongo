@@ -26,7 +26,7 @@ class AsyncMapCall:
 
     def __post_init__(self):
         self.limiter = AsyncLimiter(max_rate=self.async_args.limiter_ratio, time_period=1)
-
+        self.api_key = self.async_args.api_key
         if not self.async_args.api_key:
             try:
                 load_dotenv()
