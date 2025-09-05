@@ -1,3 +1,4 @@
+import re
 import os
 from transformers import HfArgumentParser
 import pandas as pd
@@ -7,7 +8,7 @@ import logging
 from .argument import MongoArguments, AsyncMapCallArguments, ExcelFileArguments
 from .mongo_db import MapMongoDB
 from .sync import AsyncMapCall
-from .data import ExcelObj, remove_parentheses_from_address
+from .data import ExcelObj, remove_re_pattern
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -61,8 +62,10 @@ def export2excel():
         raise ValueError(f"{data_args.filename} is not a .csv 、.xlsx or .xls file")
     # 在导出的时候，由于要读取整个文件，为避免重复加载excel，就不从 ExcelObj 中读取 address
     addresses = df[data_args.address_col_name].tolist()
-    if data_args.address_clean:
-        addresses = [remove_parentheses_from_address(address) for address in addresses]
+    if data_args.re_pattern:
+        addresses = [
+            remove_re_pattern(data_args.re_pattern)(address) for address in addresses
+        ]
     lon_lat_data = []
     for address in addresses:
         longs, lats = pd.NA, pd.NA

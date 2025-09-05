@@ -53,7 +53,6 @@ amap_export \
 --address_min_length 5 \
 --filename data/excel_name.xlsx \
 --address_col_name address \
---address_clean true \
 --output_type csv \
 --output_dir output
 ```

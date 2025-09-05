@@ -32,5 +32,7 @@ class ExcelFileArguments:
     address_col_name: str
     overwrite: bool = field(default=False)
     output_dir: str = field(default="output")
-    address_clean: bool = field(default=False, metadata={"help": "是否对地址进行处理"})
     output_type: str = field(default="csv", metadata={"help": "csv or xlsx"})
+    re_pattern: str = field(
+        default=r"\[.*?\]|<.*?>", metadata={"help": "正则表达式，用于清洗地址"}
+    )
