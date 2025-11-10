@@ -95,7 +95,7 @@ class AsyncMapCall:
         pre_length = len(addresses)
 
         addresses = [
-            address for address in addresses if len(address) > address_min_length
+            address for address in addresses if len(address) >= address_min_length
         ]
 
         addresses = [

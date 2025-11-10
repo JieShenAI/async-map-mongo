@@ -1,6 +1,6 @@
 [project]
 name = "async-map-mongo"
-version = "0.0.4"
+version = "0.0.5"
 description = "Asynchronously calls Amap's API to obtain corresponding latitude and longitude coordinates, with API call results stored in a MongoDB database. Provides functionality to query latitude and longitude from MongoDB and export to Excel."
 readme = "README.md"
 requires-python = ">=3.12"

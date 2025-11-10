@@ -29,6 +29,7 @@ api_key=Amap API Key
 Call the Amap API and save latitude and longitude information to MongoDB:
 ```shell
 amap_insert \
+--api_key your api key \
 --db_name map \
 --collection_name amap \
 --limiter_ratio 2.8 \

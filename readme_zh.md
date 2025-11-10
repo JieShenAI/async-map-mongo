@@ -25,13 +25,13 @@ api_key=高德地图API密钥
 调用高德地图API，保存经纬度信息到Mongo数据库：
 ```shell
 amap_insert \
+--api_key 密钥 \
 --db_name map \
 --collection_name amap \
 --limiter_ratio 2.8 \
 --address_min_length 5 \
 --filename data/excel_name.xlsx \
 --address_col_name address \
---address_clean true \
 --max_addresses_num 1000 \
 ```
 
